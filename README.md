@@ -5,6 +5,7 @@ This is another [opensse demo](http://sr.opensse.com), supported by [opensse](ht
 
 Demo - SketchRecognizeDemo
 ==========================
+![Try via web](http://online.opensse.com)
 
 See more search results, click [demo videos](http://sr.opensse.com).
 
