@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
 //                           "/Users/zdd/Database/recognize/vocabulary");
 
     sse::PropertyTree_t params;
-    boost::property_tree::read_json("/Users/zdd/Projects/opensr/data/params.json", params); //
+    boost::property_tree::read_json("/Users/zdd/Database/recognize/params.json", params); //
     searchEngine = new SketchSearcher(params);
 
     connect(sketchArea, SIGNAL(newSketchDone(QString)), this, SLOT(predict(QString)));
