@@ -29,9 +29,9 @@ TEMPLATE = app
 
 DESTDIR = ../bin
 
-include(/Users/zdd/Projects/opensse/opensse.pri)
+include(/Users/ddzhang/Projects/toy/src/github.com/zddhub/opensse/opensse.pri)
 
-INCLUDEPATH += /Users/zdd/Projects/opensse
+INCLUDEPATH += /Users/ddzhang/Projects/toy/src/github.com/zddhub/opensse
 
 SOURCES += main.cpp\
         mainwindow.cpp \
