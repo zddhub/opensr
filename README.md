@@ -1,63 +1,60 @@
 Open Sketch Recognize
 =====================
 
-This is another [opensse demo](http://sr.opensse.com), supported by [opensse](https://github.com/zddhub/opensse).
+This is another [OpenSSE demo](http://sr.opensse.com), supported by [OpenSSE](https://github.com/zddhub/opensse).
+
+*Note:* Strictly speaking, this demo is based on **search** method, not **recognize** method now.
+
 
 Demo - SketchRecognizeDemo
 ==========================
+
 [Try via web](http://online.opensse.com)
 
-See more search results, click [demo videos](http://sr.opensse.com).
+See more recognize results, click [demo videos](http://sr.opensse.com).
 
-![demo video](http://img.blog.csdn.net/20140520195606468)
+![Sketch recognize demo](assets/opensr.gif "Sketch recognize demo")
+
+
+How to install
+==============
+
+After installed [OpenSSE](https://github.com/zddhub/opensse), You can compile it like below:
+
+```sh
+cd gui/SketchRecognizeDemo
+mkdir release && cd release
+qmake -o Makefile ../SketchRecognizeDemo.pro
+make
+```
+
 
 Database
 ========
 
 Sketch database comes from Mathias Eitz's paper [How Do Humans Sketch Objects? ACM Transactions on Graphics (Proc. SIGGRAPH 2012)](http://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/).
 
-How to use
-==========
-First, you need config [opensse](https://github.com/zddhub/opensse), and include you opensse path to `SketchRecognizeDemo.pro` file.
-```cpp
-include(/Users/zdd/Projects/opensse/opensse.pri)
-```
+If you want to use your data, please refer to [OpenSSE Wiki](https://github.com/zddhub/opensse/wiki/How-to-train-data), train and update your own `sketches_filelist`、`sketches_index_file` and `vocabulary`.
 
-And then, You need config `params.json` file depend on you path. All data are shared on my [Dropbox](https://www.dropbox.com/sh/v2lo3qnguff1cuq/AADc1569j51vDW4ypvjFPF8ka).
-```json
-{
-    "searcher":
-    {
-        "indexfile": "/Users/zdd/Projects/opensr/data/sketchs_index_file",
-        "filelist": "/Users/zdd/Projects/opensr/data/sketchs_filelist",
-        "vocabulary": "/Users/zdd/Projects/opensr/data/vocabulary",
-        "rootdir": "",
-        "results_num": "1",
-        "views_num": "1"
-    }
-}
-```
-
-Last, read your json file:
-```cpp
-boost::property_tree::read_json("/Users/zdd/Projects/opensr/data/params.json", params); 
-```
 
 Thanks
 ======
 - [Mathias Eitz](http://cybertron.cg.tu-berlin.de/eitz/)
+
 
 License
 =======
 
 Code is under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
+
 Donations
 =========
 
-I accept tips through [Alipay](http://img.blog.csdn.net/20140506233949640). Scan below qr code to donate:
+I accept tips through [Alipay](assets/zddhub.png). Scan below qr code to donate:
 
-![Alipay](http://img.blog.csdn.net/20140506233949640 "Donation").
+[[assets/zddhub.png]]
+
 
 Contact me
 ==========
