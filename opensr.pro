@@ -17,5 +17,4 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    tools/sr \
     gui/SketchRecognizeDemo
