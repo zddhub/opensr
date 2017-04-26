@@ -19,28 +19,23 @@
 
 #include "searchengine.h"
 
-#include "common/types.h"
-#include "common/distance.h"
-#include "features/galif.h"
-#include "quantize/quantizer.h"
-#include "io/reader_writer.h"
-#include "index/invertedindex.h"
-#include "io/filelist.h"
+#include "opensse/opensse.h"
 
 class SketchSearcher : public SearchEngine
 {
 public:
-    SketchSearcher(const sse::PropertyTree_t &parameters);
+    SketchSearcher(Json &config);
+    virtual ~SketchSearcher();
 
     void query(const std::string &fileName, QueryResults &results);
 
 private:
-    boost::shared_ptr<sse::InvertedIndex> index;
-    boost::shared_ptr<sse::Galif> galif;
-    boost::shared_ptr<sse::FileList> files;
+    sse::InvertedIndex *index;
+    sse::Galif *galif;
+    sse::FileList *files;
 
     sse::Vocabularys_t vocabulary;
-    sse::Quantizer_fn quantizer;
+    sse::QuantizerHard<sse::Vec_f32_t, sse::L2norm_squared<sse::Vec_f32_t> > quantizer;
 
     const std::string _indexFile;
     const std::string _vocabularyFile;

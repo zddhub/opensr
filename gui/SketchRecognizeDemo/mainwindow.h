@@ -18,7 +18,6 @@
 #define MAINWINDOW_H
 
 #include "sketcharea.h"
-#include "recognize/sketchrecognizer.h"
 #include "searchengine.h"
 
 #include <QMainWindow>
@@ -40,7 +39,6 @@ private slots:
 private:
     SketchArea *sketchArea;
     QLabel *resultLabel;
-    sse::SketchRecognizer *sketchRecognizer;
     SearchEngine *searchEngine;
 };
 

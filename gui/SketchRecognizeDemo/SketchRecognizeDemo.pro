@@ -14,11 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #-------------------------------------------------------------------------
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-05-20T10:07:08
-#
-#-------------------------------------------------
 
 QT       += core gui printsupport
 
@@ -29,12 +24,24 @@ TEMPLATE = app
 
 DESTDIR = ../bin
 
-include(/Users/ddzhang/Projects/toy/src/github.com/zddhub/opensse/opensse.pri)
+CONFIGDIR = /tmp/SketchRecognizeDemo
 
-INCLUDEPATH += /Users/ddzhang/Projects/toy/src/github.com/zddhub/opensse
+QMAKE_POST_LINK = mkdir -p $$CONFIGDIR; cp $$PWD/config.json $$CONFIGDIR; \
+                  mkdir -p $$CONFIGDIR/data; cp $$PWD/data/* $$CONFIGDIR/data
+
+unix {
+INCLUDEPATH += $$PWD \
+    /usr/local/include
+
+LIBS += -L/usr/local/lib/ \
+            -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_highgui -lopencv_features2d -lopencv_ml \
+            -lopensse
+}
+
+macx: CONFIG += app_bundle
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     sketcharea.cpp \
     sketchsearcher.cpp
 
@@ -42,5 +49,3 @@ HEADERS  += mainwindow.h \
     sketcharea.h \
     searchengine.h \
     sketchsearcher.h
-
-macx: CONFIG += app_bundle

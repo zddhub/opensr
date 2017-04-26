@@ -47,13 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setCentralWidget(widget);
 
-    sketchRecognizer = new sse::SketchRecognizer;
-//    sketchRecognizer->load("/Users/zdd/Database/recognize/svmfile", "/Users/zdd/Database/recognize/sketchs_labels",
-//                           "/Users/zdd/Database/recognize/vocabulary");
-
-    sse::PropertyTree_t params;
-    boost::property_tree::read_json("/Users/ddzhang/Downloads/data/params.json", params); //
-    searchEngine = new SketchSearcher(params);
+    Json config = Json("/tmp/SketchRecognizeDemo/config.json");
+    searchEngine = new SketchSearcher(config);
 
     connect(sketchArea, SIGNAL(newSketchDone(QString)), this, SLOT(predict(QString)));
     connect(sketchArea, SIGNAL(clearSketchDone()), this, SLOT(clearResults()));
@@ -77,7 +72,6 @@ void MainWindow::openFile()
 void MainWindow::predict(const QString &fileName)
 {
     std::string label;
-    //sketchRecognizer->predict(fileName.toStdString(), label);
     QueryResults results;
     searchEngine->query(fileName.toStdString(), results);
     resultLabel->setText(results[0].imageName.c_str());

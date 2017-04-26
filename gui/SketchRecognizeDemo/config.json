@@ -1,0 +1,10 @@
+{
+    "searcher":
+    {
+        "indexfile": "/tmp/SketchRecognizeDemo/data/sketches_index_file",
+        "filelist": "/tmp/SketchRecognizeDemo/data/sketches_filelist",
+        "vocabulary": "/tmp/SketchRecognizeDemo/data/vocabulary",
+        "results_num": "1",
+        "views_num": "1"
+    }
+}

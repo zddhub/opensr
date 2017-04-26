@@ -15,32 +15,33 @@
  * limitations under the License.
 **************************************************************************/
 #include "sketchsearcher.h"
-#include "common/types.h"
-
 using namespace sse;
 
-SketchSearcher::SketchSearcher(const PropertyTree_t &parameters)
-    : _indexFile(parse<std::string>(parameters, "searcher.indexfile", "./data/model_indexfile"))
-    , _vocabularyFile(parse<std::string>(parameters, "searcher.vocabulary", "./data/vocabulary"))
-    , _rootdir(parse<std::string>(parameters, "searcher.rootdir", "/home/zdd/Database/model_depth_line_2"))
-    , _fileList(parse<std::string>(parameters, "searcher.filelist", "./data/model_filelist"))
-    , _numOfResults(parse<uint>(parameters, "searcher.results_num", 25))
-    , _numOfViews(parse<uint>(parameters, "searcher.views_num", 1))
+SketchSearcher::SketchSearcher(Json &config)
+    : _indexFile(config.getValue("searcher$indexfile", "/tmp/SketchRecognizeDemo/data/model_indexfile"))
+    , _vocabularyFile(config.getValue("searcher$vocabulary", "/tmp/SketchRecognizeDemo/data/vocabulary"))
+    , _fileList(config.getValue("searcher$filelist", "/tmp/SketchRecognizeDemo/data/model_filelist"))
+    , _numOfResults(convert<uint>(config.getValue("searcher$results_num", "25"), UINT))
+    , _numOfViews(convert<uint>(config.getValue("searcher$views_num", "1"), UINT))
 {
-    index = boost::make_shared<InvertedIndex>();
+    index = new InvertedIndex();
     index->load(_indexFile);
 
     read(_vocabularyFile, vocabulary);
 
-    PropertyTree_t defaultParams;
-
-    galif = boost::make_shared<Galif>(defaultParams);
+    galif = new Galif();
 
     quantizer = QuantizerHard<Vec_f32_t, L2norm_squared<Vec_f32_t> >();
 
-    files = boost::make_shared<FileList>(_rootdir);
+    files = new FileList;
     files->load(_fileList);
+}
 
+SketchSearcher::~SketchSearcher()
+{
+    delete index;
+    delete galif;
+    delete files;
 }
 
 void SketchSearcher::query(const std::string &fileName, QueryResults &results)
@@ -73,10 +74,9 @@ void SketchSearcher::query(const std::string &fileName, QueryResults &results)
     results.resize(_results.size());
 
     for(uint i = 0; i < _results.size(); i++) {
-
         results[i].ratio = _results[i].first;
         results[i].imageIndex = _results[i].second;
         results[i].imageName = files->getFilename(_results[i].second);
-        results[i].imageName = results[i].imageName.substr(results[i].imageName.find("/")+1, results[i].imageName.rfind("/")-1);
+        results[i].imageName = results[i].imageName.substr(0, results[i].imageName.rfind("/"));
     }
 }
