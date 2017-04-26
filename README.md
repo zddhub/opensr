@@ -19,7 +19,7 @@ See more recognize results, click [demo videos](http://sr.opensse.com).
 How to install
 ==============
 
-After installed [OpenSSE](https://github.com/zddhub/opensse), You can compile it like below:
+After installed [OpenSSE](https://github.com/zddhub/opensse), You can compile this like below:
 
 ```sh
 cd gui/SketchRecognizeDemo
@@ -34,7 +34,7 @@ Database
 
 Sketch database comes from Mathias Eitz's paper [How Do Humans Sketch Objects? ACM Transactions on Graphics (Proc. SIGGRAPH 2012)](http://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/).
 
-If you want to use your data, please refer to [OpenSSE Wiki](https://github.com/zddhub/opensse/wiki/How-to-train-data), train and update your own `sketches_filelist`、`sketches_index_file` and `vocabulary`.
+If you want to train your database, please refer to [OpenSSE Wiki](https://github.com/zddhub/opensse/wiki/How-to-train-data), you will get your own `sketches_filelist`、`sketches_index_file` and `vocabulary` file, and then update `config.json`.
 
 
 Thanks
@@ -53,7 +53,7 @@ Donations
 
 I accept tips through [Alipay](assets/zddhub.png). Scan below qr code to donate:
 
-[[assets/zddhub.png]]
+![Alipay](assets/zddhub.png "Donation")
 
 
 Contact me
