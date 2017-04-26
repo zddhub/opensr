@@ -1,25 +1,17 @@
 Open Sketch Recognize
 =====================
 
+[Try via web](http://online.opensse.com).
+
 This is another [OpenSSE demo](http://sr.opensse.com), supported by [OpenSSE](https://github.com/zddhub/opensse).
 
 *Note:* Strictly speaking, this demo is based on **search** method, not **recognize** method now.
 
 
-Demo - SketchRecognizeDemo
-==========================
-
-[Try via web](http://online.opensse.com)
-
-See more recognize results, click [demo videos](http://sr.opensse.com).
-
-![Sketch recognize demo](assets/opensr.gif "Sketch recognize demo")
-
-
-How to install
+How to compile
 ==============
 
-After installed [OpenSSE](https://github.com/zddhub/opensse), You can compile this like below:
+After installed [OpenSSE](https://github.com/zddhub/opensse) and [Qt 5.1+](https://www.qt.io), You can compile this like below:
 
 ```sh
 cd gui/SketchRecognizeDemo
@@ -27,6 +19,19 @@ mkdir release && cd release
 qmake -o Makefile ../SketchRecognizeDemo.pro
 make
 ```
+
+
+Demo - SketchRecognizeDemo
+==========================
+
+After compiled, you will have our SketchSearchDemo app under `bin` folder, open it like blow:
+
+![Sketch recognize demo](assets/opensr.gif "Sketch recognize demo")
+
+By the way, press 'C' in sketch pad, You will clear the sketch and draw next one.
+
+
+See more recognize results, click [demo videos](http://sr.opensse.com).
 
 
 Database
