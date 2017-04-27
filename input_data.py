@@ -44,6 +44,10 @@ class InputData:
 		r[self.types.index(label)] = 1
 		return r
 
+	def rewind(self):
+		self.train_i = 0
+		self.test_i = 0
+
 	def train_next_batch(self, size):
 		if self.train_i > len(self.train_indexes):
 			return None, None
