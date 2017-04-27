@@ -42,6 +42,18 @@ Sketch database comes from Mathias Eitz's paper [How Do Humans Sketch Objects? A
 If you want to train your database, please refer to [OpenSSE Wiki](https://github.com/zddhub/opensse/wiki/How-to-train-data), you will get your own `sketches_filelist`、`sketches_index_file` and `vocabulary` file, and then update `config.json`.
 
 
+Play with Tensorflow
+====================
+
+I have already extracted features from [Eitz's database](http://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/) under `data` folder. `sketches` includes 20000 images x 1000bins, the feature is based on `bag of words`, not pure feature.
+
+If you install [Tensorflow](https://www.tensorflow.org) and you can play with:
+
+```sh
+python3 trytf.py
+```
+
+
 Thanks
 ======
 - [Mathias Eitz](http://cybertron.cg.tu-berlin.de/eitz/)
